@@ -15,6 +15,10 @@ module Crosswords
       generate_from_matrix(matrix) if matrix
     end
 
+    def horizontal_letters
+      @horizontal_letters ||= @rows.map(&:join)
+    end
+
   private
     def generate_new(n)
       @n      = n

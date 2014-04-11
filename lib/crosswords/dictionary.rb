@@ -23,5 +23,12 @@ module Crosswords
         end
       end
     end
+
+    def find(potential_word)
+      if dictionary.has_key?(potential_word.length) &&
+        dictionary[potential_word.length].has_key?(potential_word[0])
+        dictionary[potential_word.length][potential_word[0]].find { |w| w == potential_word }
+      end
+    end
   end
 end

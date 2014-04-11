@@ -55,5 +55,15 @@ describe Crosswords::Grid do
         expect( gen_grid.columns ).to eq(reverse_matrix)
       end
     end
+
+    describe "#horizontal_letters" do
+      subject {
+        klass.generate_from_matrix( matrix ).horizontal_letters
+      }
+
+      it "should return ['ABC','BAC','CBA']" do
+        expect( subject ).to eq( ['ABC','BAC','CBA'] )
+      end
+    end
   end
 end

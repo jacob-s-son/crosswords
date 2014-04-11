@@ -20,4 +20,18 @@ describe Crosswords::Dictionary do
       expect( dictionary.dictionary[2]['A'].first ).to eq 'AA'
     end
   end
+
+  describe "#find" do
+    context "when found" do
+      it "should return word" do
+        expect( dictionary.find( "BILK" ) ).to eq 'BILK'
+      end
+    end
+
+    context "when not found" do
+      it "should return nil" do
+        expect( dictionary.find( "AHFYBBD" ) ).to be_nil
+      end
+    end
+  end
 end
