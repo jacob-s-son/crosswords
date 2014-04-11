@@ -1,6 +1,7 @@
 require 'spec_helper.rb'
 
 describe Crosswords::Dictionary do
+  #FIXME: need a better way to specify dictionary path
   let(:path)       { "/Users/ejekabsons/Workspace/dictionary/dict.txt" }
   let(:dictionary) { klass.new( path ) }
 
