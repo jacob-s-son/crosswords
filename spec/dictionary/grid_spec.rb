@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 describe Dictionary::Grid do
-  let(:grid) { Dictionary::Grid.new }
+  let(:grid) { klass.new }
 
   describe "#test" do
     it "should return 'tests'" do
