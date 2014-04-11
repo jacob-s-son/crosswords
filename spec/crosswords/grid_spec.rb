@@ -21,5 +21,9 @@ describe Crosswords::Grid do
     it "should populate columns with letters" do
       expect( grid.columns.each { |c| letters.include?(c) } ).to be_true
     end
+
+    it "should have the same letters in the first row as in the first cell of all columns" do
+      expect( grid.rows[0] ).to eq( grid.columns.map { |c| c[0] } )
+    end
   end
 end
