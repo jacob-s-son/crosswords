@@ -65,5 +65,15 @@ describe Crosswords::Grid do
         expect( subject ).to eq( ['ABC','BAC','CBA'] )
       end
     end
+
+    describe "#vertical_letters" do
+      subject {
+        klass.generate_from_matrix( matrix ).vertical_letters
+      }
+
+      it "should return ['ABC','BAB','CCA']" do
+        expect( subject ).to eq( ['ABC','BAB','CCA'] )
+      end
+    end
   end
 end

@@ -19,6 +19,10 @@ module Crosswords
       @horizontal_letters ||= @rows.map(&:join)
     end
 
+    def vertical_letters
+      @vertical_letters   ||= @columns.map(&:join)
+    end
+
   private
     def generate_new(n)
       @n      = n
