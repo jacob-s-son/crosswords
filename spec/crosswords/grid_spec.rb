@@ -75,5 +75,15 @@ describe Crosswords::Grid do
         expect( subject ).to eq( ['ABC','BAB','CCA'] )
       end
     end
+
+    describe "#diagonal_letters" do
+      subject {
+        klass.generate_from_matrix( matrix ).diagonal_letters
+      }
+
+      it "should return ['C', 'BB', 'AAA', 'BC', 'C']" do
+        expect( subject ).to eq( ['C', 'BB', 'AAA', 'BC', 'C'] )
+      end
+    end
   end
 end

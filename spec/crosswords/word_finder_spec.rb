@@ -51,5 +51,23 @@ describe Crosswords::WordFinder do
         end
       end
     end
+
+    context "diagonal" do
+      context "left to right" do
+        it "should find words 'BA', 'AB', 'AA'" do
+          expect( subject.find('diagonal_from_the_left') ).to eq(
+            Set.new ['BA', 'AB', 'AA']
+          )
+        end
+      end
+
+      context "right to left" do
+        it "should find words 'AB', 'BAA', 'BA', 'AA'" do
+          expect( subject.find('diagonal_from_the_right') ).to eq(
+            Set.new ['AB', 'BAA', 'BA', 'AA']
+          )
+        end
+      end
+    end
   end
 end

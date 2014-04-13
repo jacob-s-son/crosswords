@@ -15,6 +15,10 @@ module Crosswords
           all_words_for_letters( @grid.vertical_letters )
         when 'vertical_from_the_bottom'
           all_words_for_letters( @grid.vertical_letters, true )
+        when 'diagonal_from_the_left'
+          all_words_for_letters( @grid.diagonal_letters )
+        when 'diagonal_from_the_right'
+          all_words_for_letters( @grid.diagonal_letters, true )
         else
           raise 'Unknown direction'
       end

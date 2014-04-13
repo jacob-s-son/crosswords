@@ -23,6 +23,23 @@ module Crosswords
       @vertical_letters   ||= @columns.map(&:join)
     end
 
+    def diagonal_letters
+      @diagonal_letters ||= begin
+        # first half of the diagonals, starting from the left
+        (0..@n - 1).map do |idx|
+          (0..idx).inject("") do |str, i|
+            str << columns[i][@n - 1 - idx + i]
+          end
+        end +
+        # from the middle to the left
+        (1..@n - 1).map do |idx|
+          (0..@n - 1 - idx).inject("") do |str, i|
+            str << columns[idx+i][i]
+          end
+        end
+      end
+    end
+
   private
     def generate_new(n)
       @n      = n
