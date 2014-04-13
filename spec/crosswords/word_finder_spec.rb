@@ -9,12 +9,15 @@ describe Crosswords::WordFinder do
     ]
   }
 
-  let(:path)       { "/Users/ejekabsons/Workspace/dictionary/dict.txt" }
-  let(:dictionary)  { Crosswords::Dictionary.new(path) }
   let(:grid)        { Crosswords::Grid.generate_from_matrix( matrix ) }
 
+  before(:all) do
+    #FIXME: need a better way to specify dictionary path
+    @dictionary = Crosswords::Dictionary.new("/Users/ejekabsons/Workspace/dictionary/dict.txt")
+  end
+
   describe "#find" do
-    subject { klass.new( grid, dictionary ) }
+    subject { klass.new( grid, @dictionary ) }
 
     context "horizontal" do
       context "left to right" do
