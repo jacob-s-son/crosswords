@@ -6,23 +6,15 @@ module Crosswords
     end
 
     def find(direction)
-      case direction
-        when 'horizontal_from_the_left'
-          all_words_for_letters( @grid.horizontal_letters )
-        when 'horizontal_from_the_right'
-          all_words_for_letters( @grid.horizontal_letters, true )
-        when 'vertical_from_the_top'
-          all_words_for_letters( @grid.vertical_letters )
-        when 'vertical_from_the_bottom'
-          all_words_for_letters( @grid.vertical_letters, true )
-        when 'diagonal_from_the_left'
-          all_words_for_letters( @grid.diagonal_letters )
-        when 'diagonal_from_the_right'
-          all_words_for_letters( @grid.diagonal_letters, true )
-        else
-          raise 'Unknown direction'
-      end
+      match, dir, sub_dir = direction.match(/^([^_]+)_from_the_(.+)$/).to_a
+      all_words_for_letters(
+        @grid.send("#{dir}_letters"),
+        [ 'right', 'bottom' ].include?( sub_dir )
+      )
+    rescue NoMethodError
+      raise 'Unknown direction'
     end
+
   private
     def all_words_for_letters(words_arr, reverse=false)
       words_arr.inject(Set.new) do |words, line_of_letters|
